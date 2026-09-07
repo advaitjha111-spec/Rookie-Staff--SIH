@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+build/
+dist/
+
+# Node / Next.js
+node_modules/
+.next/
+out/
+npm-debug.log*
+
+# Environment & secrets — never commit real keys
+.env
+.env.local
+.env.*.local
+
+# Downloaded reference data — large or refreshable, don't bloat the repo
+*.mmdb
+spamhaus_drop.txt
+tor_exit_nodes.txt
+
+# Runtime case data — never commit real investigated emails
+/uploads/
+/data/cases/
+
+# Databases
+*.db
+*.sqlite3
+dump.rdb
+/neo4j-data/
+
+# Generated legal PDF exports — case-specific, regenerable
+/exports/*.pdf
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Logs
+*.log

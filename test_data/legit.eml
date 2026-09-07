@@ -1,0 +1,20 @@
+Return-Path: <john.doe@gmail.com>
+Received: from mail-oi1-f193.google.com (mail-oi1-f193.google.com [209.85.167.193])
+        by mx.target.com with ESMTPS id 12345
+        for <analyst@target.com>; Mon, 01 Jan 2024 10:00:00 +0000
+Received: by mail-oi1-f193.google.com with SMTP id 67890
+        for <analyst@target.com>; Mon, 01 Jan 2024 09:59:58 +0000
+Message-ID: <abc123xyz@mail.gmail.com>
+Date: Mon, 01 Jan 2024 09:59:50 +0000
+From: "John Doe" <john.doe@gmail.com>
+To: analyst@target.com
+Subject: Team Lunch Details
+Content-Type: text/plain; charset="UTF-8"
+
+Hi Team,
+
+Just a reminder that our lunch is at 12 PM today at the usual place.
+My number is 9876543210 if you need to reach me.
+
+Best,
+John

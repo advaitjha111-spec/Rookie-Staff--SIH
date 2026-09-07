@@ -1,0 +1,20 @@
+Return-Path: <bounces@evil-hacker-domain.xyz>
+Received: from evil.com (evil.com [185.20.30.40])
+        by mx.target.com with ESMTPS id 54321
+        for <user@target.com>; Mon, 01 Jan 2024 11:00:00 +0000
+Message-ID: <forged_id@paypal.com>
+Date: Mon, 01 Jan 2024 10:59:50 +0000
+From: "PayPal Security" <support@paypal-secure-update.com>
+To: user@target.com
+Subject: URGENT: Your account has been suspended!
+Content-Type: text/html; charset="UTF-8"
+
+<html>
+<body>
+<p>Dear Customer,</p>
+<p>We detected unusual activity on your account. Your account has been suspended.</p>
+<p>Please click here immediately to restore access:</p>
+<p><a href="http://bit.ly/malicious-link">https://paypal.com/secure-login</a></p>
+<p>Failure to act within 24 hours will result in permanent deletion.</p>
+</body>
+</html>

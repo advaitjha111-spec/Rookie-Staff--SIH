@@ -1,6 +1,9 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from contextlib import asynccontextmanager
+from typing import List
+import json
 from app.api.routes.ingestion import router as ingestion_router
+from app.api.routes.cases import router as cases_router
 from contextlib import asynccontextmanager
 
 @asynccontextmanager
@@ -15,7 +18,19 @@ app = FastAPI(
     lifespan=lifespan
 )
 
+from app.core.websocket_manager import manager
+
 app.include_router(ingestion_router, prefix="/api/v1")
+app.include_router(cases_router, prefix="/api/v1/cases")
+
+@app.websocket("/api/v1/ws/alerts")
+async def websocket_endpoint(websocket: WebSocket):
+    await manager.connect(websocket)
+    try:
+        while True:
+            await websocket.receive_text()
+    except WebSocketDisconnect:
+        manager.disconnect(websocket)
 
 @app.get("/health")
 def health_check():

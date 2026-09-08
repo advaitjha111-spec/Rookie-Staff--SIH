@@ -37,6 +37,9 @@ def analyze_email_with_llm(scrubbed_body: str) -> ForensicAIAnalysis:
     Analyze the following email body for a digital forensics investigation.
     Extract the required fields exactly as specified in the JSON schema.
     
+    IMPORTANT INSTRUCTION for 'technical_justification':
+    You must provide a strict 2-sentence rationale citing specific evidence from the email for the attribution flag. Do not just output a single word or phrase.
+    
     Email Body:
     {scrubbed_body}
     """

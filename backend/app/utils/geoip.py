@@ -1,9 +1,9 @@
 import os
 import geoip2.database
 
-# Assuming databases are stored in a data directory or current directory
-CITY_DB_PATH = os.path.join("data", "geo", "GeoLite2-City.mmdb")
-ASN_DB_PATH = os.path.join("data", "geo", "GeoLite2-ASN.mmdb")
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+CITY_DB_PATH = os.path.join(BASE_DIR, "data", "geo", "GeoLite2-City.mmdb")
+ASN_DB_PATH = os.path.join(BASE_DIR, "data", "geo", "GeoLite2-ASN.mmdb")
 
 def get_geo_info(ip_address: str) -> dict:
     """

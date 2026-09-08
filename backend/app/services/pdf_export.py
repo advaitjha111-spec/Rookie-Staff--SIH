@@ -11,7 +11,7 @@ os.makedirs(EXPORT_DIR, exist_ok=True)
 
 def generate_legal_pdf(case_id: str, case_data: dict) -> str:
     """
-    Generates a Section 63 BSA (2023) Electronic Evidence Certificate.
+    Generates a Certificate under Section 63(4) of the Bharatiya Sakshya Adhiniyam, 2023.
     """
     filepath = os.path.join(EXPORT_DIR, f"{case_id}.pdf")
     
@@ -27,7 +27,7 @@ def generate_legal_pdf(case_id: str, case_data: dict) -> str:
     Story = []
     
     # Title
-    Story.append(Paragraph("Section 63 BSA (2023) Electronic Evidence Certificate", styles['CenterTitle']))
+    Story.append(Paragraph("Certificate under Section 63(4) of the Bharatiya Sakshya Adhiniyam, 2023", styles['CenterTitle']))
     Story.append(Paragraph("pending examiner countersignature", styles['Normal']))
     Story.append(Spacer(1, 12))
     
@@ -37,9 +37,21 @@ def generate_legal_pdf(case_id: str, case_data: dict) -> str:
     Story.append(Paragraph(f"<b>Ingestion Timestamp:</b> {ingestion.get('timestamp', 'N/A')}", styles['Normal']))
     Story.append(Spacer(1, 24))
     
-    # Part A
-    Story.append(Paragraph("PART A: Technical Details & Chain of Custody", styles['SubTitle']))
+    # PART A
+    Story.append(Paragraph("PART A: Statutory Declaration", styles['SubTitle']))
+    Story.append(Paragraph("I, _________________________________ (Name), being _________________________________ (Relationship to Device) at ______________________________________________________________ (Address), do hereby declare that the electronic record identified by the cryptographic hash above was produced by a computer/device operating properly under my lawful control.", styles['Normal']))
+    Story.append(Spacer(1, 12))
+    Story.append(Paragraph("<b>Device Identification:</b>", styles['Normal']))
+    Story.append(Paragraph("[  ] Make/Model: _______________________", styles['Normal']))
+    Story.append(Paragraph("[  ] Serial No: ________________________", styles['Normal']))
+    Story.append(Paragraph("[  ] IMEI/MAC: _________________________", styles['Normal']))
+    Story.append(Paragraph("[  ] Cloud ID: _________________________", styles['Normal']))
+    Story.append(Spacer(1, 12))
+    Story.append(Paragraph("I certify that to the best of my knowledge, the computer/device was operating properly and there was no interference that could affect the accuracy of the electronic record.", styles['Normal']))
+    Story.append(Spacer(1, 24))
     
+    # TECHNICAL ANNEXURE
+    Story.append(Paragraph("TECHNICAL ANNEXURE", styles['SubTitle']))
     metadata = case_data.get("metadata", {})
     Story.append(Paragraph(f"<b>Subject:</b> {metadata.get('subject', 'N/A')}", styles['Normal']))
     Story.append(Paragraph(f"<b>From:</b> {metadata.get('from', 'N/A')}", styles['Normal']))
@@ -59,13 +71,9 @@ def generate_legal_pdf(case_id: str, case_data: dict) -> str:
         Story.append(Paragraph(f"Taxonomy: {ai_analysis.get('fraud_taxonomy')}", styles['Normal']))
         Story.append(Paragraph(f"BEC Subtype: {ai_analysis.get('bec_subtype')}", styles['Normal']))
         Story.append(Paragraph(f"Justification: {ai_analysis.get('technical_justification')}", styles['Normal']))
-        Story.append(Spacer(1, 12))
-        
-    Story.append(Paragraph("<b>Device Owner Custody Declaration:</b>", styles['Normal']))
-    Story.append(Paragraph("I certify that this electronic record was produced by a computer/device operating properly under my lawful control.", styles['Normal']))
     Story.append(Spacer(1, 24))
     
-    # Part B
+    # PART B
     Story.append(Paragraph("PART B: Independent Expert Countersignature", styles['SubTitle']))
     Story.append(Paragraph("I, the undersigned forensic examiner, have verified the cryptographic hash and trace origin of the attached electronic record.", styles['Normal']))
     Story.append(Spacer(1, 48))

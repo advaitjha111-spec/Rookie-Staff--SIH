@@ -5,8 +5,17 @@ from presidio_anonymizer import AnonymizerEngine
 from app.models.schemas import ForensicAIAnalysis
 from app.core.config import get_settings
 
-# Initialize Presidio
-analyzer = AnalyzerEngine()
+from presidio_analyzer.nlp_engine import NlpEngineProvider
+
+# Configure Presidio to use the small spacy model to prevent OOM errors
+configuration = {
+    "nlp_engine_name": "spacy",
+    "models": [{"lang_code": "en", "model_name": "en_core_web_sm"}],
+}
+provider = NlpEngineProvider(nlp_configuration=configuration)
+nlp_engine = provider.create_engine()
+
+analyzer = AnalyzerEngine(nlp_engine=nlp_engine, supported_languages=["en"])
 anonymizer = AnonymizerEngine()
 
 def scrub_pii(text: str) -> str:
@@ -63,6 +72,9 @@ def analyze_email_with_llm(scrubbed_body: str) -> ForensicAIAnalysis:
         parsed_result = ForensicAIAnalysis.model_validate_json(result_json)
         return parsed_result
     except Exception as e:
+        print(f"LLM Error: {e}")
+        if 'result_json' in locals():
+            print(f"Raw LLM Output: {result_json}")
         # Fallback if the LLM fails or doesn't return valid JSON
         # In a real environment, we'd log this and maybe retry.
         return ForensicAIAnalysis(

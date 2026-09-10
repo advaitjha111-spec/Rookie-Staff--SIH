@@ -305,10 +305,10 @@ def calculate_threat_score(
         
     ai_points = {
         "legitimate": 0,
-        "suspicious": 3,
-        "impersonated": 6,
-        "phishing": 8,
-        "fraud-related": 10
+        "suspicious": 25,
+        "impersonated": 45,
+        "phishing": 65,
+        "fraud-related": 75
     }
     score += ai_points.get(fraud_taxonomy, 0)
     

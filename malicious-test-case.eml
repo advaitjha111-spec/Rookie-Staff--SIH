@@ -1,0 +1,23 @@
+From: "Billing Support" <support@paypa1-update.com>
+To: victim@example.com
+Subject: URGENT: Your account has been restricted - Update Payment Info
+Date: Mon, 15 Aug 2026 10:00:00 +0000
+Message-ID: <9876543210@hacker-infrastructure.ru>
+Return-Path: <bounces@hacker-infrastructure.ru>
+Reply-To: <billing-department-123@gmail.com>
+Received: from mail.paypa1-update.com (185.220.101.5) by mx.victim.com with SMTP id xyz123; Mon, 15 Aug 2026 10:00:15 +0000
+Received-SPF: fail (victim.com: domain of bounces@hacker-infrastructure.ru does not designate 185.220.101.5 as permitted sender)
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+
+Dear Customer,
+
+We have detected unusual activity on your account. To prevent your account from being permanently suspended, please verify your identity and update your billing information immediately.
+
+Please click the link below to securely log in:
+http://secure-verify-paypa1.com/login?token=abc123xyz
+
+If you do not complete this verification within 24 hours, your account will be locked.
+
+Thank you,
+The Security Team

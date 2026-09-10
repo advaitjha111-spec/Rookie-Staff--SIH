@@ -16,7 +16,9 @@ def get_geo_info(ip_address: str) -> dict:
         "city": "Unknown",
         "asn": "Unknown",
         "isp": "Unknown",
-        "is_hosting": False
+        "is_hosting": False,
+        "latitude": None,
+        "longitude": None
     }
 
     if not ip_address:
@@ -31,6 +33,9 @@ def get_geo_info(ip_address: str) -> dict:
                 if response.subdivisions:
                     info["region"] = response.subdivisions.most_specific.name or "Unknown"
                 info["city"] = response.city.name or "Unknown"
+                if response.location:
+                    info["latitude"] = response.location.latitude
+                    info["longitude"] = response.location.longitude
         except Exception as e:
             print(f"Error querying MaxMind City DB: {e}")
 
